@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Shape_drawing_tracker</string>
+    <string name="app_name">Shape Drawing Tracker</string>
+    <string name="randomize_button">Randomize</string>
 </resources>
