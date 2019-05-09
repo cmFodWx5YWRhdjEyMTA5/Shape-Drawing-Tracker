@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
-import android.view.View
 import com.umbral.www.shape_drawing_tracker.R
 import com.umbral.www.shape_drawing_tracker.adapters.ShapeAdapter
 import com.umbral.www.shape_drawing_tracker.models.Shape
@@ -41,14 +39,14 @@ class ShapeSelectionActivity : AppCompatActivity() {
     }
 
     private fun fillShapeDataSet(): ArrayList<Shape> {
-        var shapeList: ArrayList<Shape> = ArrayList()
-        shapeList.add(Shape("Circle", R.drawable.shape_placeholder, false))
-        shapeList.add(Shape("Horizontal Oval", R.drawable.shape_placeholder, false))
-        shapeList.add(Shape("Vertical Oval", R.drawable.shape_placeholder, false))
-        shapeList.add(Shape("Diagonal Right Oval", R.drawable.shape_placeholder, false))
-        shapeList.add(Shape("Diagonal Left Oval", R.drawable.shape_placeholder, false))
-        shapeList.add(Shape("Thin Oval", R.drawable.shape_placeholder, false))
-        shapeList.add(Shape("Large Oval", R.drawable.shape_placeholder, false))
+        val shapeList: ArrayList<Shape> = ArrayList()
+        shapeList.add(Shape("Circle", R.drawable.circle_shape, false))
+        shapeList.add(Shape("Horizontal Oval", R.drawable.horizontal_oval_shape, false))
+        shapeList.add(Shape("Vertical Oval", R.drawable.vertical_oval_shape, false))
+        shapeList.add(Shape("Diagonal Right Oval", R.drawable.diagonal_right_oval_shape, false))
+        shapeList.add(Shape("Diagonal Left Oval", R.drawable.diagonal_left_oval_shape, false))
+        shapeList.add(Shape("Thin Oval", R.drawable.thin_oval_shape, false))
+        shapeList.add(Shape("Large Oval", R.drawable.large_oval_shape, false))
         return shapeList
     }
 
