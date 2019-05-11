@@ -1,14 +1,17 @@
-package com.umbral.www.shape_drawing_tracker.activities
+package com.umbral.www.shape_drawing_tracker.fragments
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.umbral.www.shape_drawing_tracker.R
 import com.umbral.www.shape_drawing_tracker.adapters.ShapeAdapter
 import com.umbral.www.shape_drawing_tracker.models.Shape
 
-class ShapeSelectionActivity : AppCompatActivity() {
+class ShapeSelectionFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
@@ -20,22 +23,23 @@ class ShapeSelectionActivity : AppCompatActivity() {
         internal const val GRID_LAYOUT_SPAN_COUNT = 2
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_shape_selection)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val rootView: View = inflater.inflate(R.layout.fragment_shape_selection, container, false)
+
 
         viewManager = GridLayoutManager(
-            this,
+            activity,
             GRID_LAYOUT_SPAN_COUNT
         )
 
         viewAdapter = ShapeAdapter(shapeData)
 
-        recyclerView = findViewById<RecyclerView>(R.id.recycle_shape).apply {
+        recyclerView = rootView.findViewById<RecyclerView>(R.id.recycle_shape).apply {
             layoutManager = viewManager
             adapter = viewAdapter
         }
 
+        return rootView
     }
 
     private fun fillShapeDataSet(): ArrayList<Shape> {
@@ -51,3 +55,6 @@ class ShapeSelectionActivity : AppCompatActivity() {
     }
 
 }
+
+
+
