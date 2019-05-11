@@ -11,10 +11,6 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".activities.ShapeSelectionActivity"
-                  android:label="Manage your list of shapes"
-                  android:parentActivityName=".activities.MainActivity">
-        </activity>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
