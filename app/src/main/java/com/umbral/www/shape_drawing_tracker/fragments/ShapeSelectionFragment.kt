@@ -7,9 +7,13 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.selection.ItemKeyProvider
+import androidx.recyclerview.selection.SelectionTracker
+import androidx.recyclerview.selection.StorageStrategy
 import com.umbral.www.shape_drawing_tracker.R
 import com.umbral.www.shape_drawing_tracker.adapters.ShapeAdapter
 import com.umbral.www.shape_drawing_tracker.models.Shape
+import com.umbral.www.shape_drawing_tracker.utils.ShapeDetailsLookup
 
 class ShapeSelectionFragment : Fragment() {
 
@@ -19,13 +23,15 @@ class ShapeSelectionFragment : Fragment() {
 
     private val shapeData: ArrayList<Shape> = fillShapeDataSet()
 
+    private lateinit var keyProvider: ItemKeyProvider<String>
+    private lateinit var selectionTracker: SelectionTracker<String>
+
     companion object {
         internal const val GRID_LAYOUT_SPAN_COUNT = 2
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView: View = inflater.inflate(R.layout.fragment_shape_selection, container, false)
-
 
         viewManager = GridLayoutManager(
             activity,
@@ -38,6 +44,14 @@ class ShapeSelectionFragment : Fragment() {
             layoutManager = viewManager
             adapter = viewAdapter
         }
+
+        selectionTracker = SelectionTracker.Builder<String>(
+            "shape_selection",
+            recyclerView,
+            keyProvider,
+            ShapeDetailsLookup(recyclerView),
+            StorageStrategy.createStringStorage()
+        ).build()
 
         return rootView
     }

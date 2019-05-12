@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.umbral.www.shape_drawing_tracker.R
 import com.umbral.www.shape_drawing_tracker.models.Shape
+import com.umbral.www.shape_drawing_tracker.utils.ShapeDetails
 
 class ShapeAdapter(private var shapeData: ArrayList<Shape>) : RecyclerView.Adapter<ShapeAdapter.ShapeViewHolder>() {
 
@@ -18,7 +19,9 @@ class ShapeAdapter(private var shapeData: ArrayList<Shape>) : RecyclerView.Adapt
         internal var shapeName: TextView = itemView.findViewById(R.id.shape_name)
         internal var shapeThumbnail: ImageView = itemView.findViewById(R.id.shape_thumbnail)
         internal var shapeStatus: Boolean = false
-        internal var shapeCardContainer: CardView = itemView.findViewById(R.id.shape_card_view)
+        internal var shapeContainer: CardView = itemView.findViewById(R.id.shape_card_view)
+
+        fun getShapeDetails(): ShapeDetails = ShapeDetails(adapterPosition, shapeName.text.toString())
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShapeViewHolder {
@@ -31,6 +34,8 @@ class ShapeAdapter(private var shapeData: ArrayList<Shape>) : RecyclerView.Adapt
         holder.shapeName.text = shapeData[position].mShapeName
         holder.shapeThumbnail.setImageResource(shapeData[position].mShapeImage)
         holder.shapeStatus = shapeData[position].mShapeStatus
+
+        holder.shapeContainer.isActivated = true
     }
 
     override fun getItemCount(): Int {
