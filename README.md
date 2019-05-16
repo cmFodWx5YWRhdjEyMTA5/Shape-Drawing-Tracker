@@ -20,8 +20,8 @@ Here is a quick mock up that I made:
 At his most straightforward version, this App should let the user:
 
  - Randomly generate a shape among an editable list for the user to draw 
- - Add / Delete a shape from the list
- - Save the list for future uses
+ - Allow to select all / nothing
+ - Save the list for future usages
   
 ## More Advanced Features
 Once the basics are implemented we could: 
