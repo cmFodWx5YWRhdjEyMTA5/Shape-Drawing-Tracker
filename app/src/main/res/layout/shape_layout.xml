@@ -10,14 +10,14 @@
         android:layout_marginTop="@dimen/mtrl_card_spacing"
         android:layout_marginLeft="@dimen/mtrl_card_spacing"
         android:layout_marginRight="@dimen/mtrl_card_spacing"
+        app:cardBackgroundColor="@color/shape_item_color_state"
         android:clickable="true" android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:minHeight="100dp" tools:ignore="PrivateResource">
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/secondaryColor">
+            android:layout_height="wrap_content">
 
         <ImageView android:id="@+id/shape_thumbnail"
                    android:layout_width="match_parent"
