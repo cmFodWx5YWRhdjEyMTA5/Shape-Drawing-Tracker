@@ -7,21 +7,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.selection.SelectionTracker
 import com.umbral.www.shape_drawing_tracker.R
 import com.umbral.www.shape_drawing_tracker.models.Shape
 import com.umbral.www.shape_drawing_tracker.utils.ShapeDetails
 
 class ShapeAdapter(private var shapeData: ArrayList<Shape>) : RecyclerView.Adapter<ShapeAdapter.ShapeViewHolder>() {
 
+    var selectionTracker: SelectionTracker<Long>? = null
+
+    init {
+        setHasStableIds(true)
+    }
+
     class ShapeViewHolder(
         itemView: View
     ) : RecyclerView.ViewHolder(itemView) {
-        internal var shapeName: TextView = itemView.findViewById(R.id.shape_name)
-        internal var shapeThumbnail: ImageView = itemView.findViewById(R.id.shape_thumbnail)
-        internal var shapeStatus: Boolean = false
-        internal var shapeContainer: CardView = itemView.findViewById(R.id.shape_card_view)
+        private var shapeName: TextView = itemView.findViewById(R.id.shape_name)
+        private var shapeThumbnail: ImageView = itemView.findViewById(R.id.shape_thumbnail)
+        private var shapeContainer: CardView = itemView.findViewById(R.id.shape_card_view)
 
-        fun getShapeDetails(): ShapeDetails = ShapeDetails(adapterPosition, shapeName.text.toString())
+        fun getShapeDetails(): ShapeDetails = ShapeDetails(adapterPosition, itemId)
+
+        fun bindShapeData(name: String, thumbnail: Int, isActivated: Boolean = false) {
+            shapeName.text = name
+            shapeThumbnail.setImageResource(thumbnail)
+            shapeContainer.isActivated = isActivated
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShapeViewHolder {
@@ -31,16 +43,20 @@ class ShapeAdapter(private var shapeData: ArrayList<Shape>) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ShapeViewHolder, position: Int) {
-        holder.shapeName.text = shapeData[position].mShapeName
-        holder.shapeThumbnail.setImageResource(shapeData[position].mShapeImage)
-        holder.shapeStatus = shapeData[position].mShapeStatus
+        val name = shapeData[position].mShapeName
+        val thumbnail = shapeData[position].mShapeImage
 
-        holder.shapeContainer.isActivated = true
+        selectionTracker?.let {
+            holder.bindShapeData(name, thumbnail, it.isSelected(position.toLong()))
+        }
     }
 
     override fun getItemCount(): Int {
         return shapeData.size
     }
+
+    override fun getItemId(position: Int): Long = position.toLong()
+
 }
 
 
