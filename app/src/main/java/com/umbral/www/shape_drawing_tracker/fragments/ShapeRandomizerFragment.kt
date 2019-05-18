@@ -40,10 +40,13 @@ class ShapeRandomizerFragment : Fragment(), View.OnClickListener {
     * Handle Randomize button
     * */
     override fun onClick(v: View?) {
-        if (ShapeAdapter.shapeListToRandomize.size > 0 ) {
+        if (ShapeAdapter.shapeListToRandomize.isNotEmpty()) {
             val randomNumber: Int = nextInt(0, ShapeAdapter.shapeListToRandomize.size)
             ShapeAdapter.shapeListToRandomize[randomNumber].mShapeImage.let { shapeImageView.setImageResource(it) }
             shapeTextView.text = ShapeAdapter.shapeListToRandomize[randomNumber].mShapeName
+        } else {
+            shapeImageView.setImageResource(R.drawable.empty_shape)
+            shapeTextView.text = getString(R.string.shapeTextView)
         }
     }
 
