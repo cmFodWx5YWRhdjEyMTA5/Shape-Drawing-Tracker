@@ -16,6 +16,10 @@ class ShapeAdapter(private var shapeData: ArrayList<Shape>) : RecyclerView.Adapt
 
     var selectionTracker: SelectionTracker<Long>? = null
 
+    companion object {
+        var shapeListToRandomize: ArrayList<Shape> = ArrayList()
+    }
+
     init {
         setHasStableIds(true)
     }
@@ -33,6 +37,11 @@ class ShapeAdapter(private var shapeData: ArrayList<Shape>) : RecyclerView.Adapt
             shapeName.text = name
             shapeThumbnail.setImageResource(thumbnail)
             shapeContainer.isActivated = isActivated
+
+            if (isActivated)
+                shapeListToRandomize.add(Shape(name, thumbnail))
+            else
+                shapeListToRandomize.remove(Shape(name, thumbnail))
         }
     }
 
@@ -51,9 +60,7 @@ class ShapeAdapter(private var shapeData: ArrayList<Shape>) : RecyclerView.Adapt
         }
     }
 
-    override fun getItemCount(): Int {
-        return shapeData.size
-    }
+    override fun getItemCount(): Int = shapeData.size
 
     override fun getItemId(position: Int): Long = position.toLong()
 
