@@ -62,6 +62,9 @@ class ShapeSelectionFragment : Fragment() {
         return rootView
     }
 
+    /*
+    * Statically fill the different shapes into the RecyclerView Layout
+    * */
     private fun fillShapeDataSet(): ArrayList<Shape> {
         val shapeList: ArrayList<Shape> = ArrayList()
         shapeList.add(Shape("Circle", R.drawable.circle_shape))
@@ -74,6 +77,9 @@ class ShapeSelectionFragment : Fragment() {
         return shapeList
     }
 
+    /*
+    * Handle Shape list state during fragment lifecycle
+    * */
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         mselectionTracker.onSaveInstanceState(outState)

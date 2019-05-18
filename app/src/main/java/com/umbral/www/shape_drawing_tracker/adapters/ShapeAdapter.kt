@@ -16,6 +16,10 @@ class ShapeAdapter(private var shapeData: ArrayList<Shape>) : RecyclerView.Adapt
 
     var selectionTracker: SelectionTracker<Long>? = null
 
+    companion object {
+        var shapeListToRandomize: ArrayList<Shape> = ArrayList()
+    }
+
     init {
         setHasStableIds(true)
     }
@@ -48,12 +52,12 @@ class ShapeAdapter(private var shapeData: ArrayList<Shape>) : RecyclerView.Adapt
 
         selectionTracker?.let {
             holder.bindShapeData(name, thumbnail, it.isSelected(position.toLong()))
+            if (it.isSelected(position.toLong())) shapeListToRandomize.add(Shape(name, thumbnail))
+            else shapeListToRandomize.remove(Shape(name, thumbnail))
         }
     }
 
-    override fun getItemCount(): Int {
-        return shapeData.size
-    }
+    override fun getItemCount(): Int = shapeData.size
 
     override fun getItemId(position: Int): Long = position.toLong()
 
