@@ -6,9 +6,15 @@ What to practice? How much time? Keeping track of my progress prove itself to be
 
 Then, I had an idea: 
 
->What if I could create an App that take care of everything? It shouldn't be hard after all!
+>What if I could create a simple App to determine what I should practice on? It shouldn't be hard after all!
 
 And...here we are!
+
+### First working version demo (v1.0-spark)
+
+[![v1.0-spark-demo-01a2ac58bcc93cbd79.gif](https://s3.gifyu.com/images/v1.0-spark-demo-01a2ac58bcc93cbd79.gif)](https://gifyu.com/image/9VPD)
+
+**This application is a simple way for me to apply what I've learn so far in Android. This is also the first App that I write using exclusively Kotlin** 
 
 ## First Draft
 
@@ -17,14 +23,8 @@ Here is a quick mock up that I made:
 
 ## Key Features
 
-At his most straightforward version, this App should let the user:
+At his most straightforward version, this App should allow the user to select a list of shape among a predifined pool and randomize it.
 
- - Randomly generate a shape among an editable list for the user to draw 
- - Allow to select all / nothing
- - Save the list for future usages
+
   
-## More Advanced Features
-Once the basics are implemented we could: 
- - Allow the user to create his own custom shape
- - Allow the user to classify the shapes into categories and favorite
- - Add a Stats Activity to track what shape has been practiced the most with a calendar to display the day when the user has used the tool or not
+
