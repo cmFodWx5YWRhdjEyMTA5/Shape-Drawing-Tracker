@@ -12,7 +12,9 @@ And...here we are!
 
 ### First working version demo (v1.0-spark)
 
-[![v1.0-spark-demo-01a2ac58bcc93cbd79.gif](https://s3.gifyu.com/images/v1.0-spark-demo-01a2ac58bcc93cbd79.gif)](https://gifyu.com/image/9VPD)
+[![01](https://i.postimg.cc/15ntmL1j/Screenshot-1558272114.png)
+[![02](https://i.postimg.cc/RFpS9Tsm/Screenshot-1558272239.png)
+[![03](https://i.postimg.cc/43ZN1y7D/Screenshot-1558272268.png)
 
 **This application is a simple way for me to apply what I've learn so far in Android. This is also the first App that I write using exclusively Kotlin** 
 
